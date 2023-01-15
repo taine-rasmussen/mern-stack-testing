@@ -8,7 +8,7 @@ const ListSchema = new mongoose.Schema({
   completed: {
     type: Boolean,
     required: true
-  }
+  },
 });
 
 const ListModel = mongoose.model("List", ListSchema)

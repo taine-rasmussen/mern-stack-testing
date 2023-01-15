@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require('mongoose')
 const ListModel = require('./models/List')
 
+const cors = require("cors");
+
+app.use(cors());
 app.use(express.json())
 
 mongoose.connect('mongodb+srv://TaineRas:Flick001%3D%3D1@cluster0.orhpsyz.mongodb.net/merntesting?retryWrites=true&w=majority')

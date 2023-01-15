@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const ListSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const ListSchema = new Schema({
   title: {
-    type: String,
-    required: true
+    type: String
   },
   completed: {
     type: Boolean,
-    required: true
   },
 });
 
-const ListModel = mongoose.model("List", ListSchema)
+const ListModel = mongoose.model("list", ListSchema)
 module.exports = ListModel

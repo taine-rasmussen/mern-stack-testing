@@ -9,4 +9,7 @@ const ListSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   }
-})
+});
+
+const ListModel = mongoose.model("List", ListSchema)
+module.exports = ListModel

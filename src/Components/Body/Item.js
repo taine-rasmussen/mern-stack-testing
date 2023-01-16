@@ -1,5 +1,3 @@
-
-
 const Item = (props) => {
   const {
     item: {
@@ -9,7 +7,7 @@ const Item = (props) => {
   } = props;
 
   return (
-    <div>
+    <div key={title}>
       {title}
     </div>
   )

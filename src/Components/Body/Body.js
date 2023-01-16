@@ -8,6 +8,7 @@ import Item from './Item'
 const Body = () => {
 
   const [items, setItems] = useState([]);
+  const [newItem, setNewItem] = useState({ title: '', completed: false })
 
   useEffect(
     () => {
@@ -24,7 +25,7 @@ const Body = () => {
   // Clear out saved input once api call is 200
 
   return (
-    <div>
+    <div className='body_container'>
       BODY
       <div className="list-display">
         {items.map((item) => {

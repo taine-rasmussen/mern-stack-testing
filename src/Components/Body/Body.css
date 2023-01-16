@@ -1,0 +1,14 @@
+.body_container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.additem-container{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+
+}

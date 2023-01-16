@@ -9,9 +9,12 @@ import './Body.css'
 const AddItem = (props) => {
   const [input, setInput] = useState('')
   const [newItem, setNewItem] = useState({ title: '', completed: false })
+  const [placeholderText, setPlaceholderTetxt] = useState('Add item')
 
   const updateList = () => {
-    if(!input)return;
+    if(!input){
+      return setPlaceholderTetxt('Enter item...')
+    }
 
     setNewItem({...newItem}, newItem.title = input)
     axios.post("http://localhost:3001/createListItem", newItem)
@@ -20,8 +23,8 @@ const AddItem = (props) => {
 
     setNewItem({ title: '', completed: false })
     setInput('')
+    setPlaceholderTetxt('Add item')
   }
-
 
   return (
     <div className='additem-container'>
@@ -32,7 +35,7 @@ const AddItem = (props) => {
       />
       <input
         type='text'
-        placeholder='Add item'
+        placeholder={placeholderText}
         value={input}
         onChange={(e) => {setInput(e.target.value)}} 
         className='input-field'

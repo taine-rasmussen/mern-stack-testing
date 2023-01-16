@@ -27,7 +27,9 @@ const Body = () => {
           )
         })}
       </div>
-      <AddItem />
+      <div className='body_footer'>
+        <AddItem />
+      </div>
     </div>
   )
 }

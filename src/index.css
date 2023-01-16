@@ -9,3 +9,22 @@ body {
   align-items: center;
   font-family: 'Rubik', sans-serif;
 }
+
+
+* {
+  scrollbar-width: 5px;
+  scrollbar-color: #63666A  #d3d3d3;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #d3d3d3;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #63666A;
+  border-radius: 5px;
+}

@@ -24,6 +24,7 @@ const AddItem = (props) => {
     <div className='additem-container input-icons'>
       <AiOutlinePlus />
       <input
+        placeholder='Add item'
         value={input}
         onChange={(e) => {setInput(e.target.value)}} 
         className='input-field'

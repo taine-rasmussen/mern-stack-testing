@@ -17,6 +17,7 @@ const AddItem = (props) => {
     axios.post("http://localhost:3001/createListItem", newItem)
       .then(res => console.log(res))
       .catch(err => console.log(err))
+
     setNewItem({ title: '', completed: false })
     setInput('')
   }
@@ -25,11 +26,12 @@ const AddItem = (props) => {
   return (
     <div className='additem-container'>
       <AiOutlinePlus 
-        size={25}
+        size={20}
         onClick={updateList}
         className='icon'
       />
       <input
+        type='text'
         placeholder='Add item'
         value={input}
         onChange={(e) => {setInput(e.target.value)}} 

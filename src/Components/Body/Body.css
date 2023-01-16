@@ -15,7 +15,15 @@
 input{
   padding: 8px;
   width: 180px;
+  border: none;
+  font-size: 1.1rem;
+  font-family: 'Rubik', sans-serif;
 }
+
+input::placeholder {
+  color: #000;
+}
+
 
 .icon:hover{
   cursor: pointer;

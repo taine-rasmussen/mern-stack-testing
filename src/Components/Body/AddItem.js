@@ -12,9 +12,7 @@ const AddItem = (props) => {
   const [placeholderText, setPlaceholderTetxt] = useState('Add item')
 
   const updateList = () => {
-    if(!input){
-      return setPlaceholderTetxt('Enter item...')
-    }
+    if(!input) return setPlaceholderTetxt('Enter item...');
 
     setNewItem({...newItem}, newItem.title = input)
     axios.post("http://localhost:3001/createListItem", newItem)

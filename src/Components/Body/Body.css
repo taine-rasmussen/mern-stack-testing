@@ -10,5 +10,25 @@
   align-items: center;
   flex-direction: row;
   gap: 20px;
+}
 
+.input-icons i {
+  /* position: absolute;/ */
+}
+          
+.icon {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: ease 0.25s;
+}
+          
+.input-field {
+  width: 65%;
+  padding: 5px;
 }

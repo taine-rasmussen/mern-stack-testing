@@ -8,7 +8,6 @@ import Item from './Item'
 const Body = () => {
 
   const [items, setItems] = useState([]);
-  const [newItem, setNewItem] = useState({ title: '', completed: false })
 
   useEffect(
     () => {

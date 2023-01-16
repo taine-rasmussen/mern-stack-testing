@@ -11,6 +11,8 @@ const AddItem = (props) => {
   const [newItem, setNewItem] = useState({ title: '', completed: false })
 
   const updateList = () => {
+    if(!input)return;
+
     setNewItem({...newItem}, newItem.title = input)
     axios.post("http://localhost:3001/createListItem", newItem)
       .then(res => console.log(res))
@@ -21,20 +23,18 @@ const AddItem = (props) => {
 
 
   return (
-    <div className='additem-container input-icons'>
-      <AiOutlinePlus />
+    <div className='additem-container'>
+      <AiOutlinePlus 
+        size={25}
+        onClick={updateList}
+        className='icon'
+      />
       <input
         placeholder='Add item'
         value={input}
         onChange={(e) => {setInput(e.target.value)}} 
         className='input-field'
       />
-      <i className='icon'>
-        <BiSend 
-          size={20}
-          onClick={updateList}
-        />
-      </i>
     </div>
   )
 }

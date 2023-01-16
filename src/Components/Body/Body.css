@@ -16,6 +16,7 @@
   align-items: center;
   flex-direction: row;
   gap: 20px;
+  width: 100%;
 }
 
 input{
@@ -60,8 +61,26 @@ input:focus {outline:none;}
   justify-content:flex-start;
 }
 
+.left_side_body{
+  display: flex;
+  gap: 25px;
+  justify-content: flex-start;
+  width: 85%;
+  overflow-x: hidden;
+}
+
+.right_side_body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .item_checkbox{
   width: 15px;
+}
+ 
+.item_tick:hover{
+  cursor: pointer;
 }
 
 .body_footer{

@@ -28,6 +28,11 @@ app.post("/createListItem", async (req, res) => {
   res.json(item)
 });
 
+app.put("/updateItem", async (req, res) => {
+  const item = req.body
+  console.log(req)
+})
+
 app.listen(3001, () => {
   console.log('server is running')
 })

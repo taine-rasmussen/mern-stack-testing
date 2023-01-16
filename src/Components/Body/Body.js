@@ -8,6 +8,17 @@ import Item from './Item'
 const Body = () => {
 
   const [items, setItems] = useState([]);
+  const [updateItem, setUpdateItem] = useState({ title: '', completed: false })
+
+
+  const onCompletedClick = (item) => {
+    if (!item.completed) {
+      setUpdateItem({ ...updateItem }, updateItem.completed = true)
+    }
+    axios.put("http://localhost:3001/updateItem", updateItem)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
 
   useEffect(
     () => {
@@ -23,12 +34,17 @@ const Body = () => {
       <div className="list_display">
         {items.map((item) => {
           return(
-            <Item item={item} />
+            <Item 
+              item={item}
+              onCompletedClick={onCompletedClick}
+            />
           )
         })}
       </div>
       <div className='body_footer'>
-        <AddItem />
+        <AddItem 
+          items={items}
+        />
       </div>
     </div>
   )

@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const ListSchema = new Schema({
   title: {
-    type: String
+    type: String,
+    requiered: true
   },
   completed: {
     type: Boolean,

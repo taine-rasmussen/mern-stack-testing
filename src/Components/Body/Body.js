@@ -25,8 +25,7 @@ const Body = () => {
 
   return (
     <div className='body_container'>
-      BODY
-      <div className="list-display">
+      <div className="list_display">
         {items.map((item) => {
           return(
             <Item item={item} />

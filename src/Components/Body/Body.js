@@ -18,11 +18,6 @@ const Body = () => {
     }, [items]
   )
 
-  // Input - capture users input for new item title - useState
-  // Pass this input into a function that calls our post api to update the db
-  // Default "completed" to false
-  // Clear out saved input once api call is 200
-
   return (
     <div className='body_container'>
       <div className="list_display">

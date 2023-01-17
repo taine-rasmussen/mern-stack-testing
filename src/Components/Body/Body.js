@@ -1,7 +1,6 @@
 import './Body.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
-
 import AddItem from './AddItem'
 import Item from './Item'
 
@@ -10,13 +9,31 @@ const Body = () => {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState({ title: '', completed: false })
 
-  useEffect(
-    () => {
-      axios.get("http://localhost:3001/getList")
+  const {
+    completed
+  } = items || {}
+  
+  const getItems = () => {
+    axios.get("http://localhost:3001/getList")
       .then((res) => {
         setItems(res.data)
       })
-    }, [newItem, items]
+  }
+
+  const updateItemStatus = (id) => {
+    axios.put("http://localhost:3001/updateItemStatus", {
+      id: id,
+      completed: !completed
+    }).clone()
+    .then( () => {
+      getItems()
+    })
+  };
+
+  useEffect(
+    () => {
+      getItems()
+    }, []
   )
 
   return (
@@ -26,6 +43,8 @@ const Body = () => {
           return(
             <Item 
               item={item}
+              updateItemStatus={updateItemStatus}
+              getItems={getItems}
             />
           )
         })}

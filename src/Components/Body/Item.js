@@ -1,10 +1,12 @@
 import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
 import { AiFillEdit } from 'react-icons/ai'
-import axios from 'axios'
+import { useState } from 'react'
 
 const Item = (props) => {
   const {
-    item
+    item,
+    updateItemStatus,
+    getItems
   } = props;
 
   const {
@@ -13,12 +15,7 @@ const Item = (props) => {
     _id
   } = item;
 
-  const updateItemStatus = (id) => {
-    axios.put("http://localhost:3001/updateItemStatus", {
-      id: id,
-      completed: !completed
-    })
-  };
+  const [activeEdit, setActiveEdit] = useState(false)
 
   return (
     <div 
@@ -30,7 +27,13 @@ const Item = (props) => {
           type='checkbox'
           className='item_checkbox'
         />
-        {title}
+        {activeEdit ?
+        (<input 
+          type='text'
+          placeholder='heheh'
+        />) : (
+          title
+        )}
       </div>
       <div className='right_side_body'>
         {completed ?
@@ -45,6 +48,7 @@ const Item = (props) => {
               size={20}
               style={{ color: '#63666A ' }}
               className='item_tick'
+              onClick={() => setActiveEdit(true)}
             />
             <MdDeleteForever 
               size={20}
@@ -63,6 +67,7 @@ const Item = (props) => {
               size={20}
               style={{ color: '#63666A ' }}
               className='item_tick'
+              onClick={() => setActiveEdit(true)}
             />
             <MdDeleteForever
               size={20}

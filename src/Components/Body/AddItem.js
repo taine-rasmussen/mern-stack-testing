@@ -6,11 +6,12 @@ import './Body.css'
 
 const AddItem = (props) => {
   const {
-    items
+    items,
+    newItem,
+    setNewItem
   } = props;
 
   const [input, setInput] = useState('')
-  const [newItem, setNewItem] = useState({ title: '', completed: false })
   const [placeholderText, setPlaceholderTetxt] = useState('Add item')
 
   console.log(input)
@@ -18,7 +19,7 @@ const AddItem = (props) => {
   const updateList = useCallback(
     () => {
       console.log(input, 'indside')
-      // if(input.length == 0) return setPlaceholderTetxt('Enter item...');
+      if(input.length == 0) return setPlaceholderTetxt('Enter item...');
       setNewItem({...newItem}, newItem.title = input)
       axios.post("http://localhost:3001/createListItem", newItem)
       .then(res => console.log(res))

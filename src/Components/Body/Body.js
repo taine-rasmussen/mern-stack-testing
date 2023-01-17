@@ -8,6 +8,8 @@ import Item from './Item'
 const Body = () => {
 
   const [items, setItems] = useState([]);
+  const [newItem, setNewItem] = useState({ title: '', completed: false })
+
 
   useEffect(
     () => {
@@ -15,7 +17,7 @@ const Body = () => {
       .then((res) => {
         setItems(res.data)
       })
-    }, []
+    }, [newItem]
   )
 
   return (
@@ -32,6 +34,9 @@ const Body = () => {
       <div className='body_footer'>
         <AddItem 
           items={items}
+          newItem={newItem}
+          setNewItem={setNewItem}
+
         />
       </div>
     </div>

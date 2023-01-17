@@ -1,4 +1,5 @@
-import { MdOutlineDoneAll } from 'react-icons/md'
+import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
+import { AiFillEdit } from 'react-icons/ai'
 import axios from 'axios'
 
 const Item = (props) => {
@@ -32,19 +33,44 @@ const Item = (props) => {
         {title}
       </div>
       <div className='right_side_body'>
-        {completed ? 
-          <MdOutlineDoneAll 
-            size={20} 
-            style={{color: 'green'}}
-            className='item_tick' 
-            onClick={() => { updateItemStatus(_id)}}
-          /> : 
-          <MdOutlineDoneAll
-            size={20}
-            style={{ color: '#63666A '}}
-            className='item_tick'
-            onClick={() => {updateItemStatus(_id)}}
-          />}
+        {completed ?
+          <>
+            <MdOutlineDoneAll 
+              size={20} 
+              style={{color: 'green'}}
+              className='item_tick' 
+              onClick={() => { updateItemStatus(_id)}}
+            /> 
+            <AiFillEdit
+              size={20}
+              style={{ color: '#63666A ' }}
+              className='item_tick'
+            />
+            <MdDeleteForever 
+              size={20}
+              style={{ color: '#63666A ' }}
+              className='item_tick'
+            />
+          </> :
+          <>
+            <MdOutlineRemoveDone
+              size={20}
+              style={{ color: '#63666A '}}
+              className='item_tick'
+              onClick={() => {updateItemStatus(_id)}}
+            />
+            <AiFillEdit
+              size={20}
+              style={{ color: '#63666A ' }}
+              className='item_tick'
+            />
+            <MdDeleteForever
+              size={20}
+              style={{ color: '#63666A ' }}
+              className='item_tick'
+            />
+          </>
+        }
       </div>
     </div>
   )

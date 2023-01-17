@@ -73,6 +73,7 @@ input:focus {outline:none;}
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px;
 }
 
 .item_checkbox{

@@ -16,7 +16,7 @@ const Body = () => {
       .then((res) => {
         setItems(res.data)
       })
-    }, [newItem, setItems]
+    }, [newItem, items]
   )
 
   return (

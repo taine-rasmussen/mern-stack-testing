@@ -10,14 +10,19 @@ app.use(express.json())
 
 mongoose.connect('mongodb+srv://TaineRas:Flick001%3D%3D1@cluster0.orhpsyz.mongodb.net/merntesting?retryWrites=true&w=majority')
 
-app.get("/getList", (req, res) => {
-  ListModel.find({}, (err, result) => {
-    if(err){
-      res.json(err)
-    } else {
-      res.json(result)
+app.get("/getList", async (req, res) => {
+
+    try {
+      await ListModel.find({}, (err, result) => {
+        if (err) {
+          return res.json(err)
+        } else {
+          return res.json(result)
+        }
+      })
+    } catch (err) {
+      console.log(err)
     }
-  })
 });
 
 app.post("/createListItem", async (req, res) => {
@@ -28,9 +33,19 @@ app.post("/createListItem", async (req, res) => {
   res.json(item)
 });
 
-app.put("/updateItem", async (req, res) => {
-  const item = req.body
-  console.log(req)
+app.put("/updateItemStatus", async (req, res) => {
+  const newStatus = req.body.newStatus
+  const id = req.body.id
+
+ try {
+   await ListModel.findById(id, (err, updatedItem) => {
+     updatedItem.completed = newStatus
+     updatedItem.save();
+     res.send('updateItemStatus')
+   })
+ } catch (err){
+   console.log(err)
+ }
 })
 
 app.listen(3001, () => {

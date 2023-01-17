@@ -1,16 +1,23 @@
 import { MdOutlineDoneAll } from 'react-icons/md'
-import { useState } from 'react'
 import axios from 'axios'
 
 const Item = (props) => {
   const {
-    item,
-    item: {
-      title,
-      completed
-    },
-    onCompletedClick
+    item
   } = props;
+
+  const {
+    title,
+    completed,
+    _id
+  } = item;
+
+  const updateItemStatus = (id) => {
+    axios.put("http://localhost:3001/updateItemStatus", {
+      id: id,
+      completed: !completed
+    })
+  };
 
   return (
     <div 
@@ -30,13 +37,13 @@ const Item = (props) => {
             size={20} 
             style={{color: 'green'}}
             className='item_tick' 
-            onClick={() => { onCompletedClick(item)}}
+            onClick={() => { updateItemStatus(_id)}}
           /> : 
           <MdOutlineDoneAll
             size={20}
             style={{ color: '#63666A '}}
             className='item_tick'
-            onClick={() => {onCompletedClick(item)}}
+            onClick={() => {updateItemStatus(_id)}}
           />}
       </div>
     </div>

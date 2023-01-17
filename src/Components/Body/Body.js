@@ -36,7 +36,6 @@ const Body = () => {
           return(
             <Item 
               item={item}
-              onCompletedClick={onCompletedClick}
             />
           )
         })}

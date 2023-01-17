@@ -9,6 +9,7 @@ const ListSchema = new Schema({
   },
   completed: {
     type: Boolean,
+    requiered: true
   },
 });
 

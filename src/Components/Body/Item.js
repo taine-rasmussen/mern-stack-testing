@@ -13,6 +13,7 @@ const Item = (props) => {
   } = item;
 
   const updateItemStatus = (id) => {
+    console.log(id)
     axios.put("http://localhost:3001/updateItemStatus", {
       id: id,
       completed: !completed
@@ -21,7 +22,7 @@ const Item = (props) => {
 
   return (
     <div 
-      key={title}
+      key={_id}
       className='body_item_container'
     >
       <div className='left_side_body'>

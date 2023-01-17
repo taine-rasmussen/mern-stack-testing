@@ -1,8 +1,6 @@
 import { AiOutlinePlus } from 'react-icons/ai'
-import { BiSend } from 'react-icons/bi'
 import { useState, useCallback } from 'react'
 import axios from 'axios';
-
 
 import './Body.css'
 
@@ -15,19 +13,21 @@ const AddItem = (props) => {
   const [newItem, setNewItem] = useState({ title: '', completed: false })
   const [placeholderText, setPlaceholderTetxt] = useState('Add item')
 
+  console.log(input)
+
   const updateList = useCallback(
     () => {
-      if(!input) return setPlaceholderTetxt('Enter item...');
-    setNewItem({...newItem}, newItem.title = input)
-    axios.post("http://localhost:3001/createListItem", newItem)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    setNewItem({ title: '', completed: false })
-    setInput('')
-    setPlaceholderTetxt('Add item')
-    }, [newItem]
+      console.log(input, 'indside')
+      // if(input.length == 0) return setPlaceholderTetxt('Enter item...');
+      setNewItem({...newItem}, newItem.title = input)
+      axios.post("http://localhost:3001/createListItem", newItem)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+      setNewItem({ title: '', completed: false })
+      setInput('')
+      setPlaceholderTetxt('Add item')
+    }, [input, newItem]
   )
-
 
   return (
     <div className='additem-container'>

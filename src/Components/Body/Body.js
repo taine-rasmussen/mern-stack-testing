@@ -8,17 +8,6 @@ import Item from './Item'
 const Body = () => {
 
   const [items, setItems] = useState([]);
-  const [updateItem, setUpdateItem] = useState({ title: '', completed: false })
-
-
-  const onCompletedClick = (item) => {
-    if (!item.completed) {
-      setUpdateItem({ ...updateItem }, updateItem.completed = true)
-    }
-    axios.put("http://localhost:3001/updateItem", updateItem)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  }
 
   useEffect(
     () => {

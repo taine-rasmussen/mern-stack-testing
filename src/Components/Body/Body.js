@@ -35,7 +35,6 @@ const Body = () => {
           items={items}
           newItem={newItem}
           setNewItem={setNewItem}
-
         />
       </div>
     </div>

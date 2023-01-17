@@ -3,9 +3,7 @@ import axios from 'axios'
 
 const Item = (props) => {
   const {
-    item,
-    setLoading,
-    loading
+    item
   } = props;
 
   const {
@@ -19,7 +17,6 @@ const Item = (props) => {
       id: id,
       completed: !completed
     })
-    setLoading(!loading)
   };
 
   return (

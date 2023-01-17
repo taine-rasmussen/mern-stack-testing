@@ -29,15 +29,17 @@ app.post("/createListItem", async (req, res) => {
 });
 
 app.put("/updateItemStatus", async (req, res) => {
-  const newStatus = req.body.newStatus
+  const newStatus = req.body.completed
   const id = req.body.id
+
+  console.log(newStatus, id)
 
   try {
     await ListModel.findById(id, (err, updatedItem) => {
       updatedItem.completed = newStatus
       updatedItem.save();
       res.send('updateItemStatus')
-    })
+    }).clone()
   } catch (err){
     console.log(err)
   }

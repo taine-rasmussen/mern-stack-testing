@@ -9,7 +9,7 @@ const Body = () => {
 
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState({ title: '', completed: false })
-
+  const [loading, setLoading] = useState(false)
 
   useEffect(
     () => {
@@ -17,7 +17,7 @@ const Body = () => {
       .then((res) => {
         setItems(res.data)
       })
-    }, [newItem]
+    }, [newItem, setItems, items]
   )
 
   return (
@@ -27,6 +27,8 @@ const Body = () => {
           return(
             <Item 
               item={item}
+              setLoading={setLoading}
+              loading={loading}
             />
           )
         })}

@@ -3,7 +3,9 @@ import axios from 'axios'
 
 const Item = (props) => {
   const {
-    item
+    item,
+    setLoading,
+    loading
   } = props;
 
   const {
@@ -13,11 +15,11 @@ const Item = (props) => {
   } = item;
 
   const updateItemStatus = (id) => {
-    console.log(id)
     axios.put("http://localhost:3001/updateItemStatus", {
       id: id,
       completed: !completed
     })
+    setLoading(!loading)
   };
 
   return (

@@ -6,15 +6,12 @@ import './Body.css'
 
 const AddItem = (props) => {
   const {
-    items,
     newItem,
     setNewItem
   } = props;
 
   const [input, setInput] = useState('')
   const [placeholderText, setPlaceholderTetxt] = useState('Add item')
-
-  console.log(input)
 
   const updateList = useCallback(
     () => {
@@ -28,7 +25,9 @@ const AddItem = (props) => {
       setInput('')
       setPlaceholderTetxt('Add item')
     }, [input, newItem]
-  )
+  );
+
+  console.log(input)
 
   return (
     <div className='additem-container'>

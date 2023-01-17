@@ -26,7 +26,7 @@ const Body = () => {
       .then((res) => {
         setItems(res.data)
       })
-    }, [items]
+    }, []
   )
 
   return (

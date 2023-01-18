@@ -1,19 +1,12 @@
-import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
-import { AiFillEdit } from 'react-icons/ai'
 import { useState } from 'react'
+
+import LeftSideItemBody from './LeftSideItemBody'
+import RightSideItemBody from './RightSideItemBody'
 
 const Item = (props) => {
   const {
-    item,
-    updateItemStatus,
-    getItems
+    item
   } = props;
-
-  const {
-    title,
-    completed,
-    _id
-  } = item;
 
   const [activeEdit, setActiveEdit] = useState(false)
 
@@ -22,7 +15,8 @@ const Item = (props) => {
       key={_id}
       className='body_item_container'
     >
-      <div className='left_side_body'>
+      <LeftSideItemBody />
+      {/* <div className='left_side_body'>
         <input 
           type='checkbox'
           className='item_checkbox'
@@ -34,48 +28,11 @@ const Item = (props) => {
         />) : (
           title
         )}
-      </div>
+      </div> */}
       <div className='right_side_body'>
-        {completed ?
-          <>
-            <MdOutlineDoneAll 
-              size={20} 
-              style={{color: 'green'}}
-              className='item_tick' 
-              onClick={() => { updateItemStatus(_id)}}
-            /> 
-            <AiFillEdit
-              size={20}
-              style={{ color: '#63666A ' }}
-              className='item_tick'
-              onClick={() => setActiveEdit(true)}
-            />
-            <MdDeleteForever 
-              size={20}
-              style={{ color: '#63666A ' }}
-              className='item_tick'
-            />
-          </> :
-          <>
-            <MdOutlineRemoveDone
-              size={20}
-              style={{ color: '#63666A '}}
-              className='item_tick'
-              onClick={() => {updateItemStatus(_id)}}
-            />
-            <AiFillEdit
-              size={20}
-              style={{ color: '#63666A ' }}
-              className='item_tick'
-              onClick={() => setActiveEdit(true)}
-            />
-            <MdDeleteForever
-              size={20}
-              style={{ color: '#63666A ' }}
-              className='item_tick'
-            />
-          </>
-        }
+          <RightSideItemBody
+            item={item}
+          />
       </div>
     </div>
   )

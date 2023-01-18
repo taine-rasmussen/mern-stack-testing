@@ -24,16 +24,12 @@ app.post("/createListItem", async (req, res) => {
   const item = req.body;
   const newItem = new ListModel(item);
   await newItem.save();
-
   res.json(item)
 });
 
 app.put("/updateItemStatus", async (req, res) => {
   const newStatus = req.body.completed
   const id = req.body.id
-
-  console.log(newStatus, id)
-
   try {
     await ListModel.findById(id, (err, updatedItem) => {
       updatedItem.completed = newStatus

@@ -7,13 +7,7 @@ import useItems from '../../useItems'
 const Body = () => {
 
   const { state, funcs } = useItems();
-
-  const {
-    items,
-    newItem,
-    setNewItem
-  } = state
-
+  const { items } = state
   const {
     getItems,
     updateItemStatus
@@ -32,18 +26,12 @@ const Body = () => {
           return(
             <Item 
               item={item}
-              updateItemStatus={updateItemStatus}
-              getItems={getItems}
             />
           )
         })}
       </div>
       <div className='body_footer'>
         <AddItem 
-          items={items}
-          newItem={newItem}
-          setNewItem={setNewItem}
-          getItems={getItems}
         />
       </div>
     </div>

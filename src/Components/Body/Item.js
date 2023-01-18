@@ -1,11 +1,15 @@
 import { useState } from 'react'
+import './Body.css'
 
 import LeftSideItemBody from './LeftSideItemBody'
 import RightSideItemBody from './RightSideItemBody'
 
 const Item = (props) => {
   const { item } = props;
-  const { _id } = item
+  const { 
+    _id,
+    title
+  } = item
 
   const [activeEdit, setActiveEdit] = useState(false)
 
@@ -14,26 +18,14 @@ const Item = (props) => {
       key={_id}
       className='body_item_container'
     >
-      <LeftSideItemBody />
-      {/* <div className='left_side_body'>
-        <input 
-          type='checkbox'
-          className='item_checkbox'
-        />
-        {activeEdit ?
-        (<input 
-          type='text'
-          placeholder='heheh'
-        />) : (
-          title
-        )}
-      </div> */}
-      <div className='right_side_body'>
-          <RightSideItemBody
-            item={item}
-            setActiveEdit={setActiveEdit}
-          />
-      </div>
+      <LeftSideItemBody
+        activeEdit={activeEdit}
+        title={title}
+      />
+      <RightSideItemBody
+        item={item}
+        setActiveEdit={setActiveEdit}
+      />
     </div>
   )
 }

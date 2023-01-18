@@ -1,9 +1,25 @@
-import React from 'react'
+import './Body.css'
 
-const LeftSideItemBody = () => {
+const LeftSideItemBody = (props) => {
+
+  const {
+    activeEdit,
+    title
+  } = props;
+
   return (
-    <div>
-      Left side Body
+    <div className='left_side_body'>
+      <input
+        type='checkbox'
+        className='item_checkbox'
+      />
+      {activeEdit ?
+        (<input
+          type='text'
+          placeholder='heheh'
+        />) : (
+          title
+        )}
     </div>
   )
 }

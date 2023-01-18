@@ -1,7 +1,8 @@
 import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
 import { AiFillEdit } from 'react-icons/ai'
 import useItems from '../../useItems'
-import React from 'react'
+import './Body.css'
+
 
 const RightSideItemBody = (props) => {
 
@@ -19,7 +20,7 @@ const RightSideItemBody = (props) => {
   } = funcs
 
   return (
-    <div>
+    <div className='right_side_body'>
       {completed ?
       <>
           <MdOutlineDoneAll

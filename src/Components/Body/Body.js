@@ -7,11 +7,12 @@ import useItems from '../../useItems'
 const Body = () => {
 
   const { state, funcs } = useItems();
-  const { items } = state
-  const {
-    getItems,
-    updateItemStatus
-  } = funcs
+  const { getItems } = funcs
+  const { 
+    items,
+    newItem,
+    setNewItem
+  } = state
 
   useEffect(
     () => {
@@ -32,6 +33,9 @@ const Body = () => {
       </div>
       <div className='body_footer'>
         <AddItem 
+          newItem={newItem}
+          setNewItem={setNewItem}
+          getItems={getItems}
         />
       </div>
     </div>

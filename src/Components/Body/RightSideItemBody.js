@@ -7,11 +7,13 @@ const RightSideItemBody = (props) => {
 
   const {
     item: {
-      completed
-    }
+      completed,
+      _id
+    },
+    setActiveEdit
   } = props;
   
-  const { state, funcs } = useItems();
+  const { funcs } = useItems();
   const {
     updateItemStatus
   } = funcs
@@ -24,13 +26,13 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: 'green' }}
             className='item_tick'
-            onClick={() => { updateItemStatus(_id) }}
+            onClick={() => {updateItemStatus(_id)}}
           />
           <AiFillEdit
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
-            onClick={() => setActiveEdit(true)}
+            onClick={() => {setActiveEdit(true)}}
           />
           <MdDeleteForever
             size={20}

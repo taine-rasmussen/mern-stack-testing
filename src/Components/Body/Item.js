@@ -4,9 +4,8 @@ import LeftSideItemBody from './LeftSideItemBody'
 import RightSideItemBody from './RightSideItemBody'
 
 const Item = (props) => {
-  const {
-    item
-  } = props;
+  const { item } = props;
+  const { _id } = item
 
   const [activeEdit, setActiveEdit] = useState(false)
 
@@ -32,6 +31,7 @@ const Item = (props) => {
       <div className='right_side_body'>
           <RightSideItemBody
             item={item}
+            setActiveEdit={setActiveEdit}
           />
       </div>
     </div>

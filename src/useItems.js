@@ -7,9 +7,7 @@ const useItems = () => {
   const [newItem, setNewItem] = useState({ title: '', completed: false });
 
   const {
-    completed,
-    title,
-    _id
+    completed
   } = items || {}
 
   
@@ -30,9 +28,19 @@ const useItems = () => {
     [items],
   )
 
+  const addNewItemToList = async (input) => {
+    setNewItem({ ...newItem }, newItem.title = input)
+    await axios.post("http://localhost:3001/createListItem", newItem)
+      .then(res => console.log(res))
+      .then(() => getItems())
+      .catch(err => console.log(err))
+    setNewItem({ title: '', completed: false })
+  }
+
   const funcs = {
     getItems,
-    updateItemStatus
+    updateItemStatus,
+    addNewItemToList
   };
 
   const state = {

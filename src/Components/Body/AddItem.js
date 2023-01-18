@@ -28,8 +28,6 @@ const AddItem = (props) => {
     }, [input, newItem]
   );
 
-  console.log('THE LOOP')
-
   return (
     <div className='additem-container'>
       <AiOutlinePlus 

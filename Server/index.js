@@ -10,8 +10,8 @@ app.use(express.json())
 
 mongoose.connect('mongodb+srv://TaineRas:Flick001%3D%3D1@cluster0.orhpsyz.mongodb.net/merntesting?retryWrites=true&w=majority')
 
-app.get("/getList", (req, res) => {
-   ListModel.find({}, (err, result) => {
+app.get("/getList", async (req, res) => {
+   await ListModel.find({}, (err, result) => {
     if(err){
       res.json(err)
     } else {

@@ -1,34 +1,23 @@
 import './Body.css'
-import { useState, useEffect, useCallback } from 'react'
-import axios from 'axios';
+import { useEffect } from 'react'
 import AddItem from './AddItem'
 import Item from './Item'
+import useItems from '../../useItems'
 
 const Body = () => {
 
-  const [items, setItems] = useState([]);
-  const [newItem, setNewItem] = useState({ title: '', completed: false })
+  const { state, funcs } = useItems();
 
   const {
-    completed
-  } = items || {}
-  
-  const getItems = () => {
-    axios.get("http://localhost:3001/getList")
-      .then((res) => {
-        setItems(res.data)
-      })
-  }
+    items,
+    newItem,
+    setNewItem
+  } = state
 
-  const updateItemStatus = (id) => {
-    axios.put("http://localhost:3001/updateItemStatus", {
-      id: id,
-      completed: !completed
-    }).clone()
-    .then( () => {
-      getItems()
-    })
-  };
+  const {
+    getItems,
+    updateItemStatus
+  } = funcs
 
   useEffect(
     () => {

@@ -43,6 +43,7 @@ const Body = () => {
           items={items}
           newItem={newItem}
           setNewItem={setNewItem}
+          getItems={getItems}
         />
       </div>
     </div>

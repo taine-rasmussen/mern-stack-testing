@@ -20,6 +20,8 @@ const Body = () => {
     }, []
   )
 
+  console.log(items)
+
   // insta sort completed to  bottom of list
 
   return (
@@ -29,6 +31,7 @@ const Body = () => {
           return(
             <Item 
               item={item}
+              items={items}
             />
           )
         })}

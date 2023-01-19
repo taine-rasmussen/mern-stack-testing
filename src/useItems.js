@@ -21,7 +21,6 @@ const useItems = () => {
   const getItems = () => {
     axios.get("http://localhost:3001/getList")
       .then((res) => {
-        console.log(res.data)
         setItems(res.data)
       })
   }
@@ -43,16 +42,9 @@ const useItems = () => {
     setNewItem({ title: '', completed: false })
   }
 
-  const updateStateAfterDelete = (del) => {
-    console.log(items)
-    const newList = items.filter((item) => item._id !== del._id)
-    setItems(newList)
-  }
-
   const funcs = {
     updateItemStatus,
     addNewItemToList,
-    updateStateAfterDelete,
     deleteItem,
     getItems
   };
@@ -60,7 +52,8 @@ const useItems = () => {
   const state = {
     setNewItem,
     newItem,
-    items,
+    setItems,
+    items
   };
 
   return { state, funcs }

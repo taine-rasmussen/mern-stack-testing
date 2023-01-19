@@ -13,23 +13,25 @@ const RightSideItemBody = (props) => {
       _id
     },
     setActiveEdit,
-    item
+    item,
+    items
   } = props;
   
   const { funcs, state } = useItems();
   const {
-    updateStateAfterDelete,
     updateItemStatus,
     deleteItem
   } = funcs
   const { 
-    items
+    setItems
   } = state
 
-  const handleDelete = (item) => {
-    console.log(items, item)
-    updateStateAfterDelete(item)
+  const updateStateAfterDelete = (del) => {
     deleteItem(item)
+    const newList = items.filter((item) => item._id !== del._id)
+    console.log(items, newList)
+    setItems(newList)
+    console.log('update?',items)
   }
 
   return (
@@ -52,7 +54,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
-            onClick={() => { handleDelete(item) }}
+            onClick={() => { updateStateAfterDelete(item) }}
           />
       </> : 
       <>
@@ -72,7 +74,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
-            onClick={() => { handleDelete(item)}}
+            onClick={() => { updateStateAfterDelete(item)}}
           />
       </>
     }

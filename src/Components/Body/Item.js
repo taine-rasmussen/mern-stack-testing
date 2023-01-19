@@ -5,7 +5,7 @@ import LeftSideItemBody from './LeftSideItemBody'
 import RightSideItemBody from './RightSideItemBody'
 
 const Item = (props) => {
-  const { item } = props;
+  const { item, items } = props;
   const { 
     _id,
     title
@@ -21,9 +21,10 @@ const Item = (props) => {
       <LeftSideItemBody
         activeEdit={activeEdit}
         title={title}
-      />
+        />
       <RightSideItemBody
         item={item}
+        items={items}
         setActiveEdit={setActiveEdit}
       />
     </div>

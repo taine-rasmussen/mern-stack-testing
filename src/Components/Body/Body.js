@@ -20,6 +20,8 @@ const Body = () => {
     }, []
   )
 
+  // insta sort completed to  bottom of list
+
   return (
     <div className='body_container'>
       <div className="list_display">

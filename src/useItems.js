@@ -18,15 +18,21 @@ const useItems = () => {
     })
   };
 
-  const getItems = useCallback(
-    () => {
-      axios.get("http://localhost:3001/getList")
-        .then((res) => {
-          setItems(res.data)
-        })
-    },
-    [items],
-  )
+  const getItems = () => {
+    axios.get("http://localhost:3001/getList")
+      .then((res) => {
+        console.log(res.data)
+        setItems(res.data)
+      })
+  }
+
+  const deleteItem = (item) => {
+    axios.delete("http://localhost:3001/deleteItem", {
+      data: item
+    }).then(() => getItems())
+      .then(res => console.log(res.body))
+      .catch(err => console.log(err))
+  }
 
   const addNewItemToList = async (input) => {
     setNewItem({ ...newItem }, newItem.title = input)
@@ -37,10 +43,18 @@ const useItems = () => {
     setNewItem({ title: '', completed: false })
   }
 
+  const updateStateAfterDelete = (del) => {
+    console.log(items)
+    const newList = items.filter((item) => item._id !== del._id)
+    setItems(newList)
+  }
+
   const funcs = {
-    getItems,
     updateItemStatus,
-    addNewItemToList
+    addNewItemToList,
+    updateStateAfterDelete,
+    deleteItem,
+    getItems
   };
 
   const state = {

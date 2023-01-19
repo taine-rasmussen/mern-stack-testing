@@ -1,5 +1,6 @@
 import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
 import { AiFillEdit } from 'react-icons/ai'
+import { useEffect } from 'react'
 import useItems from '../../useItems'
 import './Body.css'
 
@@ -11,13 +12,25 @@ const RightSideItemBody = (props) => {
       completed,
       _id
     },
-    setActiveEdit
+    setActiveEdit,
+    item
   } = props;
   
-  const { funcs } = useItems();
+  const { funcs, state } = useItems();
   const {
-    updateItemStatus
+    updateStateAfterDelete,
+    updateItemStatus,
+    deleteItem
   } = funcs
+  const { 
+    items
+  } = state
+
+  const handleDelete = (item) => {
+    console.log(items, item)
+    updateStateAfterDelete(item)
+    deleteItem(item)
+  }
 
   return (
     <div className='right_side_body'>
@@ -39,6 +52,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
+            onClick={() => { handleDelete(item) }}
           />
       </> : 
       <>
@@ -58,6 +72,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
+            onClick={() => { handleDelete(item)}}
           />
       </>
     }

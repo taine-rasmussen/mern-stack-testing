@@ -15,7 +15,7 @@ app.get("/getList", async (req, res) => {
     if(err){
       res.json(err)
     } else {
-      res.json(result)
+      res.json(result)      
     }
   })
 });
@@ -27,11 +27,20 @@ app.post("/createListItem", async (req, res) => {
   res.json(item)
 });
 
+app.delete("/deleteItem", async (req, res) => {
+  const item = req.body
+  await ListModel.findOneAndRemove({item},
+    () => {
+      console.log('Deleted:', item )
+    })
+});
+
 app.put("/updateItemStatus", async (req, res) => {
   const newStatus = req.body.completed
   const id = req.body.id
   try {
-    await ListModel.findById(id, (err, updatedItem) => {
+    await ListModel.findOneAndUpdate(id, (err, updatedItem) => {
+      console.log(updatedItem, newStatus)
       updatedItem.completed = newStatus
       updatedItem.save();
       res.send('updateItemStatus')

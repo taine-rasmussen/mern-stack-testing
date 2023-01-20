@@ -19,7 +19,6 @@ const RightSideItemBody = (props) => {
   
   const { funcs, state } = useItems();
   const {
-    updateItemStatus,
     deleteItem
   } = funcs
   const { 
@@ -32,16 +31,12 @@ const RightSideItemBody = (props) => {
     setItems(newList)
   }
 
+  console.log(_id, completed)
+
   return (
     <div className='right_side_body'>
       {completed ?
       <>
-          <MdOutlineDoneAll
-            size={20}
-            style={{ color: 'green' }}
-            className='item_tick'
-            onClick={() => {updateItemStatus(_id)}}
-          />
           <AiFillEdit
             size={20}
             style={{ color: '#63666A ' }}
@@ -56,12 +51,6 @@ const RightSideItemBody = (props) => {
           />
       </> : 
       <>
-          <MdOutlineRemoveDone
-            size={20}
-            style={{ color: '#63666A ' }}
-            className='item_tick'
-            onClick={() => { updateItemStatus(_id) }}
-          />
           <AiFillEdit
             size={20}
             style={{ color: '#63666A ' }}

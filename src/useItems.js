@@ -6,16 +6,14 @@ const useItems = () => {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState({ title: '', completed: false });
 
-  const {
-    completed
-  } = items || {}
-
-  
-  const updateItemStatus = (id) => {
-    axios.put("http://localhost:3001/updateItemStatus", {
+  const updateItemStatus = async (id, status) => {
+    console.log(status)
+    await axios.put("http://localhost:3001/updateItemStatus", {
       id: id,
-      completed: !completed
-    })
+      completed: !status
+    }).then(res => console.log(res.body))
+      .catch(err => console.log(err))
+
   };
 
   const getItems = () => {
@@ -23,6 +21,7 @@ const useItems = () => {
       .then((res) => {
         setItems(res.data)
       })
+      .catch(err => console.log(err))
   }
 
   const deleteItem = (item) => {

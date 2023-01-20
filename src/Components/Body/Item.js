@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './Body.css'
 
-import LeftSideItemBody from './LeftSideItemBody'
 import RightSideItemBody from './RightSideItemBody'
+import LeftSideItemBody from './LeftSideItemBody'
 
 const Item = (props) => {
   const { item, items } = props;
   const { 
-    _id,
-    title
+    completed,
+    title,
+    _id
   } = item
 
   const [activeEdit, setActiveEdit] = useState(false)
@@ -19,14 +20,16 @@ const Item = (props) => {
       className='body_item_container'
     >
       <LeftSideItemBody
+        completed={completed}
         activeEdit={activeEdit}
         title={title}
+        _id={_id}
         />
       <RightSideItemBody
-        item={item}
-        items={items}
         setActiveEdit={setActiveEdit}
         activeEdit={activeEdit}
+        items={items}
+        item={item}
       />
     </div>
   )

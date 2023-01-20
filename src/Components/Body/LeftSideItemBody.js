@@ -1,17 +1,24 @@
+import useItems from '../../useItems'
 import './Body.css'
 
 const LeftSideItemBody = (props) => {
 
   const {
     activeEdit,
-    title
+    completed,
+    title,
+    _id
   } = props;
+
+  const { funcs } = useItems();
+  const { updateItemStatus } = funcs
 
   return (
     <div className='left_side_body'>
       <input
         type='checkbox'
-        className='item_checkbox'
+        className='item_tick item_checkbox'
+        onClick={() => { updateItemStatus(_id, completed) }}
       />
       {activeEdit ?
         (<input
@@ -20,7 +27,7 @@ const LeftSideItemBody = (props) => {
           className='edit_input'
         />) : (
           <div className='item_edit'>
-            title
+            {title}
           </div>
         )}
     </div>

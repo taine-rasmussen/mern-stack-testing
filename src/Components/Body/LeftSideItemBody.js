@@ -17,8 +17,11 @@ const LeftSideItemBody = (props) => {
         (<input
           type='text'
           placeholder='heheh'
+          className='edit_input'
         />) : (
-          title
+          <div className='item_edit'>
+            title
+          </div>
         )}
     </div>
   )

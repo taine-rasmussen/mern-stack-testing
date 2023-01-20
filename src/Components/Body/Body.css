@@ -36,7 +36,7 @@ input{
   overflow-y: auto;
 }
 
-input::placeholder {
+.item_checkbox::placeholder {
   color: #000;
 }
 
@@ -78,6 +78,16 @@ input:focus {outline:none;}
 
 .item_checkbox{
   width: 15px;
+}
+
+.item_edit{
+  padding: 8px;
+  font-size: 1.1rem;
+  padding: 8px;
+}
+
+.edit_input{
+  background: #ededed;
 }
  
 .item_tick:hover{

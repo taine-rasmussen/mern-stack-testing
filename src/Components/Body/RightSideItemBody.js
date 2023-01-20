@@ -1,6 +1,5 @@
 import { MdOutlineDoneAll, MdDeleteForever, MdOutlineRemoveDone } from 'react-icons/md'
 import { AiFillEdit } from 'react-icons/ai'
-import { useEffect } from 'react'
 import useItems from '../../useItems'
 import './Body.css'
 
@@ -13,6 +12,7 @@ const RightSideItemBody = (props) => {
       _id
     },
     setActiveEdit,
+    activeEdit,
     item,
     items
   } = props;
@@ -29,9 +29,7 @@ const RightSideItemBody = (props) => {
   const updateStateAfterDelete = (del) => {
     deleteItem(item)
     const newList = items.filter((item) => item._id !== del._id)
-    console.log(items, newList)
     setItems(newList)
-    console.log('update?',items)
   }
 
   return (
@@ -48,7 +46,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
-            onClick={() => {setActiveEdit(true)}}
+            onClick={() => {setActiveEdit(!activeEdit)}}
           />
           <MdDeleteForever
             size={20}
@@ -68,7 +66,7 @@ const RightSideItemBody = (props) => {
             size={20}
             style={{ color: '#63666A ' }}
             className='item_tick'
-            onClick={() => setActiveEdit(true)}
+            onClick={() => setActiveEdit(!activeEdit)}
           />
           <MdDeleteForever
             size={20}

@@ -26,6 +26,7 @@ const Item = (props) => {
         item={item}
         items={items}
         setActiveEdit={setActiveEdit}
+        activeEdit={activeEdit}
       />
     </div>
   )

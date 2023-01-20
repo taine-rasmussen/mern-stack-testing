@@ -29,7 +29,7 @@ const useItems = () => {
     axios.delete("http://localhost:3001/deleteItem", {
       data: item
     }).then(() => getItems())
-      .then(res => console.log(res.body))
+      .then(res => console.log('adasdf',res.body))
       .catch(err => console.log(err))
   }
 

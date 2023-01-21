@@ -31,8 +31,6 @@ const RightSideItemBody = (props) => {
     setItems(newList)
   }
 
-  console.log(_id, completed)
-
   return (
     <div className='right_side_body'>
       {completed ?

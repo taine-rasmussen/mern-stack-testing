@@ -36,13 +36,13 @@ const RightSideItemBody = (props) => {
       {completed ?
       <>
           <AiFillEdit
-            size={20}
+            size={30}
             style={{ color: '#63666A ' }}
             className='item_tick'
             onClick={() => {setActiveEdit(!activeEdit)}}
           />
           <MdDeleteForever
-            size={20}
+            size={30}
             style={{ color: '#63666A ' }}
             className='item_tick'
             onClick={() => { updateStateAfterDelete(item) }}
@@ -50,13 +50,13 @@ const RightSideItemBody = (props) => {
       </> : 
       <>
           <AiFillEdit
-            size={20}
+            size={30}
             style={{ color: '#63666A ' }}
             className='item_tick'
             onClick={() => setActiveEdit(!activeEdit)}
           />
           <MdDeleteForever
-            size={20}
+            size={30}
             style={{ color: '#63666A ' }}
             className='item_tick'
             onClick={() => { updateStateAfterDelete(item)}}

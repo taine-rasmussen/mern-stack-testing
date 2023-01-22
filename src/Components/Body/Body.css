@@ -57,6 +57,9 @@ input:focus {outline:none;}
   flex-direction: row;
   gap: 20px;
   justify-content:flex-start;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 .left_side_body{

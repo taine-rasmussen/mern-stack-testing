@@ -7,7 +7,6 @@ const useItems = () => {
   const [newItem, setNewItem] = useState({ title: '', completed: false });
 
   const updateItemStatus = async (id, status) => {
-    console.log(status)
     await axios.put("http://localhost:3001/updateItemStatus", {
       id: id,
       completed: !status

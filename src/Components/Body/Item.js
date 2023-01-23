@@ -20,8 +20,9 @@ const Item = (props) => {
       className='body_item_container'
     >
       <LeftSideItemBody
-        completed={completed}
+        setActiveEdit={setActiveEdit}
         activeEdit={activeEdit}
+        completed={completed}
         title={title}
         _id={_id}
         />

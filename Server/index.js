@@ -20,6 +20,15 @@ app.get("/getList", async (req, res) => {
   })
 });
 
+app.put("/updateItem", async (req, res) => {
+  const item = req.body
+  console.log(item)
+  await ListModel.findByIdAndUpdate(item.id, { item },
+    () => {
+      console.log('update:', item)
+    })
+})
+
 app.post("/createListItem", async (req, res) => {
   const item = req.body;
   const newItem = new ListModel(item);

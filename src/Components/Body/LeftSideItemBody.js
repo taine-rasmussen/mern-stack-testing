@@ -14,13 +14,14 @@ const LeftSideItemBody = (props) => {
   } = props;
 
   const { funcs } = useItems();
-  const { updateItemStatus } = funcs
+  const { updateItemStatus, updateItem } = funcs
 
   const [input, setInput] = useState('')
 
   const handleClick = () => {
-    updateItemStatus(_id, completed)
+    updateItem(input)
     setActiveEdit(!activeEdit)
+    setInput('')
   }
 
   console.log(input)

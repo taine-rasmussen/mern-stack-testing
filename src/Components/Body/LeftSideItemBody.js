@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { IoMdSend } from 'react-icons/io'
 import useItems from '../../useItems'
 import './Body.css'
@@ -15,10 +16,14 @@ const LeftSideItemBody = (props) => {
   const { funcs } = useItems();
   const { updateItemStatus } = funcs
 
+  const [input, setInput] = useState('')
+
   const handleClick = () => {
     updateItemStatus(_id, completed)
     setActiveEdit(!activeEdit)
   }
+
+  console.log(input)
 
   return (
     <div className='left_side_body'>
@@ -34,6 +39,8 @@ const LeftSideItemBody = (props) => {
               type='text'
               placeholder='New item...'
               className='edit_input'
+              value={input}
+              onChange={(e) => { setInput(e.target.value)}}
             />
             <IoMdSend
               size={30}

@@ -17,7 +17,7 @@ const LeftSideItemBody = (props) => {
 
   const handleClick = () => {
     updateItemStatus(_id, completed)
-    console.log('handle click')
+    setActiveEdit(!activeEdit)
   }
 
   return (

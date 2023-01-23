@@ -60,7 +60,7 @@ input:focus {outline:none;}
 
 .left_side_body{
   display: flex;
-  gap: 25px;
+  gap: 20px;
   justify-content: flex-start;
   width: 85%;
   overflow-x: hidden;

@@ -3,7 +3,8 @@
   align-items: center;
   flex-direction: column;
   height: 65vh;
-  width: 60vw;
+  width: 40vw;
   border: 2px solid #000;
+  border-radius: 5px;
   margin-top: 10%;
 }

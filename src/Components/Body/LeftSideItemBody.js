@@ -24,8 +24,6 @@ const LeftSideItemBody = (props) => {
     setInput('')
   }
 
-  console.log(input)
-
   return (
     <div className='left_side_body'>
       <input

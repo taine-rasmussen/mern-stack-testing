@@ -14,12 +14,6 @@ const useItems = () => {
       .catch(err => console.log(err))
   };
 
-  const updateItem = async (update) => {
-    await axios.put("http://localhost:3001/updateItem", update)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  }
-
   const getItems = () => {
     axios.get("http://localhost:3001/getList")
       .then((res) => {
@@ -27,6 +21,16 @@ const useItems = () => {
       })
       .catch(err => console.log(err))
   }
+
+  const updateItem = async (id, item) => {
+    await axios.put("http://localhost:3001/updateItem", {
+      _id: id,
+      title: item
+    })
+      .then(res => {
+        getItems()
+      });
+  };
 
   const deleteItem = (item) => {
     axios.delete("http://localhost:3001/deleteItem", {

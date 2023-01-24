@@ -21,12 +21,14 @@ app.get("/getList", async (req, res) => {
 });
 
 app.put("/updateItem", async (req, res) => {
-  const item = req.body
-  console.log(item)
-  await ListModel.findByIdAndUpdate(item.id, { item },
-    () => {
-      console.log('update:', item)
-    })
+  console.log(req.body)
+  const id = req.body._id
+  const item = req.body.iten
+
+  await ListModel.update({_id: id}, {$set: {title: item }}, (err, doc) => {
+    if(err) return console.log(err);
+    res.json(doc);
+  })
 })
 
 app.post("/createListItem", async (req, res) => {

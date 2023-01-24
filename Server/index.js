@@ -21,11 +21,11 @@ app.get("/getList", async (req, res) => {
 });
 
 app.post("/updateItem", async (req, res) => {
-  console.log(req.body, 'some')
+  console.log(req.body)
   const id = req.body._id
-  const item = req.body.item
+  const newTitle = req.body.title
   try {
-    await ListModel.updateOne( { id: id }, { $set: { title: item }})
+    await ListModel.updateOne({ id: id }, { $set: { title: newTitle }})
   } catch (err) {
     console.log(err)
   }

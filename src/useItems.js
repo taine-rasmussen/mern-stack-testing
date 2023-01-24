@@ -27,9 +27,9 @@ const useItems = () => {
       id: id,
       title: item
     })
-      .then(res => {
-        getItems()
-      });
+    .then(res => {
+      getItems()
+    })
   };
 
   const deleteItem = (item) => {

@@ -19,7 +19,7 @@ const LeftSideItemBody = (props) => {
   const [input, setInput] = useState('')
 
   const handleClick = () => {
-    updateItem(input)
+    updateItem(_id, input)
     setActiveEdit(!activeEdit)
     setInput('')
   }

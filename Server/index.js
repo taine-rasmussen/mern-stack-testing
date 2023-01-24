@@ -21,7 +21,7 @@ app.get("/getList", async (req, res) => {
 });
 
 app.post("/updateItem", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body, res.body)
   const id = req.body._id
   const newTitle = req.body.title
   try {

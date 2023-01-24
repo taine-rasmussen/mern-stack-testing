@@ -23,8 +23,8 @@ const useItems = () => {
   }
 
   const updateItem = async (id, item) => {
-    await axios.put("http://localhost:3001/updateItem", {
-      _id: id,
+    await axios.post("http://localhost:3001/updateItem", {
+      id: id,
       title: item
     })
       .then(res => {

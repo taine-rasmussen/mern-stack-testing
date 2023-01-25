@@ -20,12 +20,17 @@ app.get("/getList", async (req, res) => {
   })
 });
 
-app.post("/updateItem", async (req, res) => {
-  console.log(req.body, res.body)
-  const id = req.body._id
-  const newTitle = req.body.title
+app.post("/updateItem", (req, res) => {
+  const id = req.body.id
+  const title = req.body.title
+  console.log(id, title, 'given to func')
   try {
-    await ListModel.updateOne({ id: id }, { $set: { title: newTitle }})
+    ListModel.findOneAndUpdate({ id: id },
+      { $set: { title: title } },
+      { returnDocument: 'after'}).exec((err, data) => {
+        //further response with updated data
+        console.log(data, err, 'output')
+      });
   } catch (err) {
     console.log(err)
   }

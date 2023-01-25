@@ -8,8 +8,7 @@ const ListSchema = new Schema({
     requiered: true
   },
   completed: {
-    type: Boolean,
-    requiered: true
+    type: Boolean
   },
 });
 

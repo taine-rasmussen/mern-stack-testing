@@ -30,6 +30,7 @@ const LeftSideItemBody = (props) => {
         type='checkbox'
         className='item_tick item_checkbox'
         onClick={() => { updateItemStatus(_id, completed) }}
+        checked={completed}
       />
       {activeEdit ?
         (

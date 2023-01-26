@@ -55,17 +55,21 @@ app.delete("/deleteItem", async (req, res) => {
 });
 
 app.put("/updateItemStatus", async (req, res) => {
-  const newStatus = req.body.completed
-  const id = req.body.id
   try {
-    await ListModel.findOneAndUpdate(id, (err, updatedItem) => {
-      console.log(updatedItem, newStatus)
-      updatedItem.completed = newStatus
-      updatedItem.save();
-      res.send('updateItemStatus')
-    }).clone()
-  } catch (err){
-    console.log(err)
+    const id = req.body.id
+    const status = await ListModel.findByIdAndUpdate(
+      { _id: id }, req.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    )
+    if (!status) {
+      return res.status(404).json(`No task with id: ${id}`)
+    }
+    res.status.json(status);
+  } catch (error) {
+    res.status(500).json({ error: error.message })
   }
 })
 

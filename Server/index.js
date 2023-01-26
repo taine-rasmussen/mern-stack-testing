@@ -22,22 +22,20 @@ app.get("/getList", async (req, res) => {
 
 app.post("/updateItem", async (req, res) => {
  try{
-  const { id } = req.body.id
-  const title = await ListModel.findByIdAndUpdate(
+  const id = req.body.id
+   const title = await ListModel.findByIdAndUpdate(
     { _id: id }, req.body, 
     { 
       new: true,
       runValidators: true
     }
-  );
-
+  )
   if(!title){
     return res.status(404).json(`No task with id: ${id}`)
   }
-
   res.status.json(title);
  } catch (error){
-  res.status(500).json({  error: err.message })
+  res.status(500).json({  error: error.message })
  }
 })
 

@@ -23,13 +23,12 @@ const useItems = () => {
   }
 
   const updateItem = async (id, item) => {
-    await axios.post("http://localhost:3001/updateItem", {
+     await axios.post("http://localhost:3001/updateItem", {
       id: id,
       title: item
-    })
-    .then(res => {
-      getItems()
-    })
+     }).then(() => getItems())
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   };
 
   const deleteItem = (item) => {

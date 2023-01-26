@@ -20,20 +20,25 @@ app.get("/getList", async (req, res) => {
   })
 });
 
-app.post("/updateItem", (req, res) => {
-  const id = req.body.id
-  const title = req.body.title
-  console.log(id, title, 'given to func')
-  try {
-    ListModel.findOneAndUpdate({ id: id },
-      { $set: { title: title } },
-      { returnDocument: 'after'}).exec((err, data) => {
-        //further response with updated data
-        console.log(data, err, 'output')
-      });
-  } catch (err) {
-    console.log(err)
+app.post("/updateItem", async (req, res) => {
+ try{
+  const { id } = req.body.id
+  const title = await ListModel.findByIdAndUpdate(
+    { _id: id }, req.body, 
+    { 
+      new: true,
+      runValidators: true
+    }
+  );
+
+  if(!title){
+    return res.status(404).json(`No task with id: ${id}`)
   }
+
+  res.status.json(title);
+ } catch (error){
+  res.status(500).json({  error: err.message })
+ }
 })
 
 app.post("/createListItem", async (req, res) => {
@@ -41,7 +46,7 @@ app.post("/createListItem", async (req, res) => {
   const newItem = new ListModel(item);
   await newItem.save();
   res.json(item)
-});
+}); 
 
 app.delete("/deleteItem", async (req, res) => {
   const item = req.body
